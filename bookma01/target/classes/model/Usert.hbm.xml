@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+     <class name="model.Usert" table="usert" schema ="test">
+         <id name="id" type="java.lang.Integer">
+             <column name="ID" />
+             <generator class="native" />
+         </id>
+         <property name="name" type="java.lang.String">
+             <column name="Name" />
+         </property>
+         <property name="code" type="java.lang.String">
+             <column name="Code" />
+         </property>
+         <property name="sex" type="java.lang.String">
+             <column name="Sex" />
+         </property>
+         <property name="status" type="java.lang.String">
+             <column name="Status" />
+         </property>
+         <property name="role" type="java.lang.String">
+             <column name="Role" />
+         </property>
+     </class>
+ </hibernate-mapping>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context" 
+		xmlns:mvc="http://www.springframework.org/schema/mvc" 
+		xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+							http://www.springframework.org/schema/mvc/spring-mvc-3.1.1.xsd 
+							http://www.springframework.org/schema/beans 
+							http://www.springframework.org/schema/beans/spring-beans.xsd 
+							http://www.springframework.org/schema/context 
+							http://www.springframework.org/schema/context/spring-context-3.1.1.xsd">
+<bean id="viewresolver"  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<property name="prefix" value="/WEB-INF/pages/"/>
+<property name="suffix" value=".jsp"/>
+</bean>
+ 
+<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+<property name="mappings">
+<props>
+<prop key="/login.do">filenameController</prop>
+<prop key="/userreg.do">ControllerReg</prop> 
+<prop key="/bookmng.do">ControllerBook</prop> 
+</props>
+</property>
+</bean>
+
+<bean id="ControllerReg" class="controller.ControllerReg">
+<property name="usertmanager" ref="usertmanager"/>
+</bean>
+
+<bean id="ControllerBook" class="controller.ControllerBook">
+<property name="booktmanager" ref="booktmanager"/>
+</bean>
+
+
+<bean id="usertmanager" class="service.impl.UsertManagerImpl">
+<property name="tblUsertProcessDao" ref="tblUsertProcessDao"/>
+</bean>
+
+<bean id="booktmanager" class="service.impl.BooktManagerImpl">
+<property name="tblBooktProcessDao" ref="tblBooktProcessDao"/>
+</bean>
+
+<bean id="filenameController"   class="org.springframework.web.servlet.mvc.UrlFilenameViewController">
+</bean>
+
+
+
+</beans>
